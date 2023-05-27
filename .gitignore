@@ -1,0 +1,5 @@
+*.pt
+outputs/*
+archive.zip
+data/
+configs/
