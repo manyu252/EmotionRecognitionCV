@@ -1,0 +1,12 @@
+{
+    "model": "Emo4CNN",
+    "weights": "model.pt",
+    "lr": 0.001,
+    "adaptive_lr": true,
+    "lr_decay_after_epochs": 10,
+    "batch_size": 1024,
+    "num_epochs": 30,
+    "augment": true,
+    "train_ratio": 0.8,
+    "device": "mps"
+}
