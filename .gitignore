@@ -1,4 +1,10 @@
 *.pt
+__pycache__/*
+.DS_Store
+report_images/*
+model_weights/*
+*.zip
+Anand_Second_Assignment_CV2023/*
 outputs/*
 archive.zip
 data/
