@@ -45,4 +45,8 @@ python3 emotion_recognition.py --config configs/config_emo5_not_adaptive_lr_augm
 echo "Done 3"
 echo "Done Emo5CNN"
 
+echo "Starting Emo6CNN"
+python3 emotion_recognition.py --config configs/config_emo6_adaptive_lr_augmented.json > log.txt | mv log.txt $(ls -td -- outputs/*/ | head -n 1)
+echo "Done Emo6CNN"
+
 echo "Done with all configs"
