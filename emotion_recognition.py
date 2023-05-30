@@ -13,11 +13,29 @@ import torch.optim as optim
 from torchsummary import summary
 
 from data_loader import create_dataset, create_dataloader
-from EmoCNN import EmoCNN
-from Emo2CNN import Emo2CNN
-from Emo3CNN import Emo3CNN
-from Emo4CNN import Emo4CNN
-from Emo5CNN import Emo5CNN
+from models.EmoCNN import EmoCNN
+from models.Emo2CNN import Emo2CNN
+from models.Emo3CNN import Emo3CNN
+from models.Emo4CNN import Emo4CNN
+from models.Emo5CNN import Emo5CNN
+from models.Emo6CNN import Emo6CNN
+
+def labels_mapping(label):
+    if label == 0:
+        return "Angry"
+    elif label == 1:
+        return "Disgust"
+    elif label == 2:
+        return "Fear"
+    elif label == 3:
+        return "Happy"
+    elif label == 4:
+        return "Sad"
+    elif label == 5:
+        return "Surprise"
+    elif label == 6:
+        return "Neutral"
+
 
 def select_model(model_name):
     if model_name == "Emo5CNN":
@@ -30,6 +48,8 @@ def select_model(model_name):
         model = Emo2CNN()
     elif model_name == "EmoCNN":
         model = EmoCNN()
+    elif model_name == "Emo6CNN":
+        model = Emo6CNN()
     print("model selected: {}".format(model_name))
     return model
 
