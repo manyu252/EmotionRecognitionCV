@@ -173,9 +173,9 @@ def test(test_data_loader, device, model_name):
         accuracy = 100 * correct / total
         print(f"Test Accuracy = {accuracy}%")
 
-def read_config_json():
+def read_config_json(file_path):
     try:
-        with open('config.json') as json_file:
+        with open(file_path) as json_file:
             data = json.load(json_file)
             return data
     except FileNotFoundError:
@@ -189,8 +189,8 @@ def create_output_folder():
         print("Output folder already exists")
     return output_dir
 
-def copy_files_to_output_dir(output_dir):
-    shutil.copyfile('config.json', os.path.join(output_dir, 'config.json'))
+def copy_files_to_output_dir(output_dir, config_file_path):
+    shutil.copyfile(config_file_path, os.path.join(output_dir, 'config.json'))
 
 def argparser():
     parser = argparse.ArgumentParser(description='Train a model')
@@ -204,7 +204,7 @@ def main():
     img_array, label_array = create_dataset()
     train_data_loader, val_data_loader = create_dataloader(img_array, label_array, config["batch_size"], config['train_ratio'], config['augment'])
     train(train_data_loader, val_data_loader, config['device'], config['num_epochs'], config['model'], config['lr'], config['adaptive_lr'], config['batch_size'], config['lr_decay_after_epochs'], output_dir)
-    copy_files_to_output_dir(output_dir)
+    copy_files_to_output_dir(output_dir, args.config)
     # test(test_data_loader, args.device, args.model)
 
 if __name__ == "__main__":
